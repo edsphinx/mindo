@@ -1,6 +1,6 @@
 {
     "name": "@edsphinx/mindo",
-    "version": "0.1.0",
+    "version": "0.0.2",
     "description": "AI-powered development memory assistant. Never re-explain your project to your AI again.",
     "main": "dist/index.js",
     "bin": {

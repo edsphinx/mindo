@@ -32,3 +32,6 @@ coverage/
 # Local database
 *.db
 *.db-journal
+
+# Local mindo config (each dev has their own)
+.mindo/local/

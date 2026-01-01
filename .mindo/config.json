@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "name": "@edsphinx/mindo",
+  "context": {
+    "description": "",
+    "techStack": [
+      "TypeScript",
+      "Git"
+    ]
+  },
+  "sync": {
+    "enabled": false
+  }
+}
