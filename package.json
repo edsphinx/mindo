@@ -1,0 +1,47 @@
+{
+    "name": "@edsphinx/mindo",
+    "version": "0.1.0",
+    "description": "AI-powered development memory assistant. Never re-explain your project to your AI again.",
+    "main": "dist/index.js",
+    "bin": {
+        "mindo": "./bin/mindo.js"
+    },
+    "scripts": {
+        "build": "bun build src/index.ts --outdir dist --target node",
+        "dev": "bun run src/cli/index.ts",
+        "serve": "bun run src/server/index.ts",
+        "test": "bun test"
+    },
+    "keywords": [
+        "ai",
+        "developer",
+        "memory",
+        "mcp",
+        "context",
+        "rag",
+        "assistant",
+        "coding",
+        "decisions",
+        "adr"
+    ],
+    "author": "edsphinx",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/edsphinx/mindo"
+    },
+    "homepage": "https://github.com/edsphinx/mindo#readme",
+    "bugs": {
+        "url": "https://github.com/edsphinx/mindo/issues"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "dependencies": {
+        "@libsql/client": "^0.15.0"
+    },
+    "devDependencies": {
+        "@types/node": "^22.0.0",
+        "typescript": "^5.0.0"
+    }
+}
