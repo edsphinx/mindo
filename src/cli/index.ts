@@ -11,16 +11,19 @@ const commands: Record<string, () => void | Promise<void>> = {
     serve: () => import('./commands/serve').then(m => m.serve()),
     remember: () => import('./commands/remember').then(m => m.remember(args.slice(1))),
     search: () => import('./commands/search').then(m => m.search(args.slice(1))),
+    daemon: () => import('./commands/daemon').then(m => m.daemon(args.slice(1))),
     status: () => import('./commands/status').then(m => m.status()),
     context: () => import('./commands/context').then(m => m.context()),
     help: () => showHelp(),
     '--help': () => showHelp(),
     '-h': () => showHelp(),
+    '--version': () => console.log('0.0.2'),
+    '-v': () => console.log('0.0.2'),
 };
 
 function showHelp() {
     console.log(`
-🧠 Mindo - AI Development Memory Assistant
+🧠 Mindo v0.0.2 - AI Development Memory Assistant
 
 Usage: mindo <command> [options]
 
@@ -29,15 +32,16 @@ Commands:
   serve         Start MCP server
   remember      Add a decision or fact to memory
   search        Search decisions and context
+  daemon        Manage background daemon (install/start/stop)
   context       Show current project context
   status        Check Mindo status
   help          Show this help
 
 Examples:
   mindo init
-  mindo serve
-  mindo remember "Using React for UI because of team experience"
-  mindo search "authentication"
+  mindo remember "Using React for better DX"
+  mindo search "auth"
+  mindo daemon install
 
 Learn more: https://github.com/edsphinx/mindo
 `);
@@ -55,3 +59,4 @@ async function main() {
 }
 
 main().catch(console.error);
+
