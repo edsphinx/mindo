@@ -76,9 +76,10 @@ mindo serve
 | `mindo serve` | Start MCP server |
 | `mindo status` | Show project status |
 | `mindo context` | Display project context |
-| `mindo daemon install` | Install auto-start daemon |
-| `mindo daemon start` | Start background daemon |
-| `mindo daemon stop` | Stop daemon |
+| `mindo daemon install` | Install auto-start daemon (includes tech stack detection) |
+| `mindo daemon start` | Start background daemon (includes tech stack detection) |
+| `mindo daemon stop` | Stop the daemon |
+| `mindo detect` | Detect the tech stack of the current project |
 
 ## How It Works
 
@@ -180,7 +181,7 @@ When you use an AI assistant, it queries the **Mindo MCP Server**. The server ag
 * [x] CLI with init/remember/search
 * [x] Basic MCP Server Implementation
 * [x] Linux Daemon (Systemd)
-* [ ] Auto-detect project tech stack (Next.js, Go, Python detection)
+* [x] Auto-detect project tech stack (Next.js, Go, Python detection)
 * [ ] **Turso Sync**: Sync team decisions across devices
 * [ ] **Vector Search**: Upgrade to LanceDB for semantic search capabilities
 

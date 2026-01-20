@@ -3,6 +3,8 @@
  * Command-line interface for Mindo
  */
 
+import { detectCommand } from './commands/detect';
+
 const args = process.argv.slice(2);
 const command = args[0] || 'help';
 
@@ -56,6 +58,11 @@ async function main() {
         showHelp();
         process.exit(1);
     }
+}
+
+// Add detect command to CLI
+if (command === 'detect') {
+  detectCommand();
 }
 
 main().catch(console.error);

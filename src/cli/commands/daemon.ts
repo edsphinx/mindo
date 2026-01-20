@@ -7,6 +7,8 @@ import { existsSync, writeFileSync, readFileSync, unlinkSync } from 'fs';
 import { join } from 'path';
 import { execSync } from 'child_process';
 import { getMindoHome, initGlobalMindo } from '../../core/config';
+import { startTechStackDaemon, stopTechStackDaemon } from '../../core/techStackDaemon';
+import { detectTechStack } from '../../core/detectTechStack';
 
 const SYSTEMD_PATH = join(
     process.env.HOME || '',
@@ -110,6 +112,14 @@ async function startDaemon() {
         execSync('systemctl --user start mindo.service');
         console.log('✅ Mindo daemon started');
         console.log('   Server running at http://localhost:3100');
+
+        // Start tech stack detection in background
+        setInterval(() => {
+            const detectedTech = detectTechStack();
+            const outputPath = join(getMindoHome(), 'detectedTech.json');
+            writeFileSync(outputPath, JSON.stringify(detectedTech, null, 2));
+            console.log('🔍 Detected tech stack updated:', detectedTech);
+        }, 60000); // Run every 1 minute
     } catch (error) {
         console.error('❌ Failed to start daemon. Did you run: mindo daemon install?');
     }
@@ -156,6 +166,20 @@ async function daemonStatus() {
             console.log('   Run: mindo daemon start');
         }
     }
+}
+
+/**
+ * Command to start the tech stack detection daemon.
+ */
+export function startDaemonCommand() {
+  startTechStackDaemon();
+}
+
+/**
+ * Command to stop the tech stack detection daemon.
+ */
+export function stopDaemonCommand() {
+  stopTechStackDaemon();
 }
 
 function showDaemonHelp() {
